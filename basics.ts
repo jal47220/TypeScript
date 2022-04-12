@@ -71,3 +71,47 @@ function litCombine (n1: Combinable, n2: Combinable, conversionType: 'as-number'
 console.log(litCombine(5, 2.8, 'as-number'));
 console.log(litCombine(5, 2.8, 'as-string'));
 // console.log(litCombine(5, 2.8, 'as-boolean')); // Errors due to not matching literals 
+
+// Void/undefined return type
+function printResult (num: number): void {
+    console.log('Result: ' + num);
+} 
+function printResult2 (num: number): undefined {
+    console.log('Result: ' + num);
+    return;
+} 
+printResult(add(5, 12));
+
+// Function as type
+let typeFunc: (num: number) => undefined;
+typeFunc = printResult2;
+// typeFunc = printResult; // Errors due to return type mismatch
+// typeFunc = 5; // Errors due to type mismatch
+
+// Callback function
+function addNumAndHandle (n1: number, n2: number, cb: (num: number) => void) {
+    cb(n1 + n2);
+}
+addNumAndHandle(10, 20, (result) => {
+    console.log(result);
+})
+function addStrAndHandle (n1: number, n2: number, cb: (str: string) => void) {
+    cb(n1.toString() + n2.toString());
+}
+addStrAndHandle(10, 20, (result) => {
+    console.log(result);
+    return result; // Ignored due to void return type on callback
+})
+
+// Unknown type
+let input: unknown;
+let str2: string;
+input = 'text';
+// str2 = input; // Errors because unknown can't be implicitly cast to string
+if(typeof input === 'string'){ str2 = input; }
+
+// Never type (because function does not even resolve)
+function generateError (message: string, code: number): never {
+    throw { message: message, errorCode: code }
+}
+generateError('An error occurred', 500);
