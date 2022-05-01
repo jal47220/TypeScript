@@ -1,4 +1,4 @@
-export function runBasics() {
+export function run() {
     // Inferred types:
     function add (n1: number, n2: number) {
         return n1 + n2;
@@ -36,7 +36,7 @@ export function runBasics() {
     const arrObj = { words: ['alpha', 'beta', 'charlie'] }
     for (const word of arrObj.words) {
         console.log(word.toUpperCase());
-        // console.log(word.toFixed(2)); // Error due to number method call on inferred string
+        //console.log(word.toFixed(2)); // Error due to number method call on inferred string
     }
 
     // Explicit array type (similar to tuples):
@@ -48,7 +48,7 @@ export function runBasics() {
     // Tuple:
     const tupleObj: { strOrNumArr: [number, string]; } = { strOrNumArr: [1, 'two'] }
     tupleObj.strOrNumArr.push(3); // Technically breaks tuple, but is allowed
-    // tupleObj.strOrNumArr[3] = 'four'; // Errors because strOrNumArr[3] is inferred as undefined
+    //tupleObj.strOrNumArr[3] = 'four'; // Errors because strOrNumArr[3] is inferred as undefined
     for (const strOrNum of tupleObj.strOrNumArr) { console.log(strOrNum); }
 
     // Enum:
@@ -73,7 +73,7 @@ export function runBasics() {
     }
     console.log(litCombine(5, 2.8, 'as-number'));
     console.log(litCombine(5, 2.8, 'as-string'));
-    // console.log(litCombine(5, 2.8, 'as-boolean')); // Errors due to not matching literals 
+    //console.log(litCombine(5, 2.8, 'as-boolean')); // Errors due to not matching literals 
 
     // Void/undefined return type
     function printResult (num: number): void {
@@ -88,8 +88,8 @@ export function runBasics() {
     // Function as type
     let typeFunc: (num: number) => undefined;
     typeFunc = printResult2;
-    // typeFunc = printResult; // Errors due to return type mismatch
-    // typeFunc = 5; // Errors due to type mismatch
+    //typeFunc = printResult; // Errors due to return type mismatch
+    //typeFunc = 5; // Errors due to type mismatch
     returnInput(typeFunc);
 
     // Callback function
@@ -111,8 +111,9 @@ export function runBasics() {
     let input: unknown;
     let str2: string;
     input = 'text';
-    // str2 = input; // Errors because unknown can't be implicitly cast to string
+    //str2 = input; // Errors because unknown can't be implicitly cast to string
     if (typeof input === 'string'){ str2 = input; }
+    else { str2 = "unused"; returnInput(str2); }
 
     // Arrow function + default arg
     const subOne = (a: number, b: number = 1) => a - b;

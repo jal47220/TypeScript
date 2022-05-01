@@ -1,3 +1,3 @@
-import { runBasics } from './basics.js';
+import { run as runBasics } from './basics.js';
 
 runBasics();
