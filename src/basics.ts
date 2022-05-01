@@ -31,6 +31,7 @@ export function run() {
     */
     let anyArray: any[];
     anyArray = ['one', 2];
+    returnInput(anyArray);
 
     // Inferred types in an array:
     const arrObj = { words: ['alpha', 'beta', 'charlie'] }
@@ -117,16 +118,34 @@ export function run() {
 
     // Arrow function + default arg
     const subOne = (a: number, b: number = 1) => a - b;
-    const printOut = (output : string | number | Array<any>) => console.log(output);
+    const printOut = (output : string | number | Array<any> | { name : string, age: number}) => console.log(output);
     printOut(subOne(2));
 
-    // Spread operator
+    // Spread operator for array and object
     const list1 = [1, 2];
     printOut(list1);
     const list2 = [...list1, 3];
     printOut(list2);
     list1.push(...list2);
     printOut(list1);
+    const copiedPerson = { ...person };
+    printOut(copiedPerson);
+
+    // Destructuring
+    const [item1, item2, ...remainingItems] = list1;
+    printOut([item1, item2]);
+    printOut(remainingItems);
+    const { words } = arrObj;
+    printOut(words);
+
+    // Rest parameters + array reduce
+    const addArray = ( ...numbers : number[] ) => {
+        return numbers.reduce((current, next) => {
+            return current + next;
+        }, 0);
+    };
+    printOut(addArray(1, 2, 3));
+    printOut(addArray(1, 2, 3, 4, 5));
 
     // Never type (because function does not even resolve)
     function generateError (message: string, code: number): never {
