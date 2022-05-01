@@ -1,3 +1,3 @@
-/// <reference path="basics.ts" />
+import { runBasics } from './basics.js';
 
-namespace App {}
+runBasics();

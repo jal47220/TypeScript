@@ -1,4 +1,4 @@
-namespace App {
+export function runBasics() {
     // Inferred types:
     function add (n1: number, n2: number) {
         return n1 + n2;
@@ -11,6 +11,7 @@ namespace App {
     /  str = 5;
     /  console.log(add(str, 2.8));
     */ 
+    returnInput(str);
 
     // Explicit types for an object:
     const person: {
@@ -20,6 +21,7 @@ namespace App {
         name: 'Josh',
         age: 26
     }
+    returnInput(person);
 
     // 'any' type:
     /* 
@@ -88,6 +90,7 @@ namespace App {
     typeFunc = printResult2;
     // typeFunc = printResult; // Errors due to return type mismatch
     // typeFunc = 5; // Errors due to type mismatch
+    returnInput(typeFunc);
 
     // Callback function
     function addNumAndHandle (n1: number, n2: number, cb: (num: number) => void) {
@@ -109,13 +112,7 @@ namespace App {
     let str2: string;
     input = 'text';
     // str2 = input; // Errors because unknown can't be implicitly cast to string
-    if(typeof input === 'string'){ str2 = input; }
-
-    // Never type (because function does not even resolve)
-    function generateError (message: string, code: number): never {
-        throw { message: message, errorCode: code }
-    }
-    generateError('An error occurred', 500);
+    if (typeof input === 'string'){ str2 = input; }
 
     // Arrow function + default arg
     const subOne = (a: number, b: number = 1) => a - b;
@@ -129,4 +126,13 @@ namespace App {
     printOut(list2);
     list1.push(...list2);
     printOut(list1);
+
+    // Never type (because function does not even resolve)
+    function generateError (message: string, code: number): never {
+        throw { message: message, errorCode: code }
+    }
+    generateError('An error occurred', 500);
+
+    // Only used to avoid ide detection of intentionally unused vars
+    function returnInput (input: any){ return input };
 }
