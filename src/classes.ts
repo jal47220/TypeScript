@@ -1,33 +1,45 @@
 class Department {
     name: string;
 
-    constructor (n: string) {
-        this.name = n;
-    }
+    constructor (n: string) { this.name = n; }
 
     describe (this: Department) {
-        console.log('Department: ' + this.name);
+        console.log('Department: (${this.name})');
     }
 }
 
-class User {
-    private id: string;
+class User { 
+    constructor (protected readonly id: string) {} 
 
-    constructor (id: string) {
-        this.id = id;
+    describeAccess () {
+        console.log("User ${this.id} has normal user access.");
     }
 }
 
-export function run () {
+class ITUser extends User { 
+    constructor () { super('999'); } 
+
+    // Override
+    describeAccess () {
+        console.log("User ${this.id} has admin access.");
+    }
+}
+
+function runClasses () {
     const physics = new Department('physics');
     physics.describe();
 
-    const physicsCopy = { describe: physics.describe };
+    // @ts-ignore unused
+    var physicsCopy = { describe: physics.describe };
     //physicsCopy.describe(); // Would not work because describe requires a Department obj
 
     const math = { name: 'math', describe: physics.describe};
     math.describe();
 
     const user = new User('1');
-    //user.id = '2'; // Not possible because id is private
+    //user.id = '2'; // Not possible because id is protected and read-only
+    user.describeAccess();
+
+    const itUser = new ITUser();
+    itUser.describeAccess();
 }
