@@ -11,7 +11,6 @@ export function run() {
     /  str = 5;
     /  console.log(add(str, 2.8));
     */ 
-    returnInput(str);
 
     // Explicit types for an object:
     const person: {
@@ -21,7 +20,6 @@ export function run() {
         name: 'Josh',
         age: 26
     }
-    returnInput(person);
 
     // 'any' type:
     /* 
@@ -31,7 +29,6 @@ export function run() {
     */
     let anyArray: any[];
     anyArray = ['one', 2];
-    returnInput(anyArray);
 
     // Inferred types in an array:
     const arrObj = { words: ['alpha', 'beta', 'charlie'] }
@@ -91,7 +88,6 @@ export function run() {
     typeFunc = printResult2;
     //typeFunc = printResult; // Errors due to return type mismatch
     //typeFunc = 5; // Errors due to type mismatch
-    returnInput(typeFunc);
 
     // Callback function
     function addNumAndHandle (n1: number, n2: number, cb: (num: number) => void) {
@@ -114,7 +110,6 @@ export function run() {
     input = 'text';
     //str2 = input; // Errors because unknown can't be implicitly cast to string
     if (typeof input === 'string'){ str2 = input; }
-    else { str2 = "unused"; returnInput(str2); }
 
     // Arrow function + default arg
     const subOne = (a: number, b: number = 1) => a - b;
@@ -152,7 +147,4 @@ export function run() {
         throw { message: message, errorCode: code }
     }
     generateError('An error occurred', 500);
-
-    // Only used to avoid ide detection of intentionally unused vars
-    function returnInput (input: any){ return input };
 }
