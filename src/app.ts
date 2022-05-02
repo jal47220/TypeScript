@@ -1,13 +1,17 @@
-import { run as runBasics } from './basics.js';
-import { run as runClasses } from './classes.js';
+/// <reference path="./basics.ts" />
+/// <reference path="./classes.ts" />
 
-runBasics();
-printSeparator();
-runClasses();
-printSeparator();
+class App {
+    main () {
+        runBasics();
+        this.printSeparator();
+        runClasses();
+        this.printSeparator();
+    }
 
-function printSeparator () {
-    console.log('/n');
-    console.log('----------------------------------------------')
-    console.log('/n');
+    printSeparator () {
+        console.log('/n');
+        console.log('----------------------------------------------')
+        console.log('/n');
+    }
 }
