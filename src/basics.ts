@@ -4,6 +4,7 @@ export function run() {
         return n1 + n2;
     }
     console.log(add(5, 2.8));
+    // @ts-ignore unused
     let str: string;
     str = '5';
     /* 
@@ -27,6 +28,7 @@ export function run() {
     /  let strArray: string[];
     /  strArray = ['one', 2];
     */
+    // @ts-ignore unused
     let anyArray: any[];
     anyArray = ['one', 2];
 
@@ -84,6 +86,7 @@ export function run() {
     printResult(add(5, 12));
 
     // Function as type
+    // @ts-ignore unused
     let typeFunc: (num: number) => undefined;
     typeFunc = printResult2;
     //typeFunc = printResult; // Errors due to return type mismatch
@@ -106,6 +109,7 @@ export function run() {
 
     // Unknown type
     let input: unknown;
+    // @ts-ignore unused
     let str2: string;
     input = 'text';
     //str2 = input; // Errors because unknown can't be implicitly cast to string
