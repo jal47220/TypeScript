@@ -1,17 +1,13 @@
 /// <reference path="./basics.ts" />
 /// <reference path="./classes.ts" />
 
-class App {
-    main () {
-        runBasics();
-        this.printSeparator();
-        runClasses();
-        this.printSeparator();
-    }
+runClasses();
+this.printSeparator();
+runBasics(); // Must run last due to intentional error
+this.printSeparator();
 
-    printSeparator () {
-        console.log('/n');
-        console.log('----------------------------------------------')
-        console.log('/n');
-    }
+function printSeparator () {
+    console.log('');
+    console.log('-------------------------------------------')
+    console.log('');
 }
