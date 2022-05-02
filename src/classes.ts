@@ -4,7 +4,7 @@ class Department {
     constructor (n: string) { this.name = n; }
 
     describe (this: Department) {
-        console.log('Department: (${this.name})');
+        console.log(`Department: ${this.name}`);
     }
 }
 
@@ -12,7 +12,7 @@ class User {
     constructor (protected readonly id: string) {} 
 
     describeAccess () {
-        console.log("User ${this.id} has normal user access.");
+        console.log(`User ${this.id} has normal user access.`);
     }
 }
 
@@ -21,7 +21,7 @@ class ITUser extends User {
 
     // Override
     describeAccess () {
-        console.log("User ${this.id} has admin access.");
+        console.log(`User ${this.id} has admin access.`);
     }
 }
 
