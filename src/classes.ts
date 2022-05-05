@@ -5,15 +5,15 @@ class Department {
 
     describe (this: Department) { console.log(`Department: ${this.name}`); }
 
-    static createUser(id: string) { return new User(id); }
+    static createUser (id: string) { return new User(id); }
 }
 
-abstract class Person { abstract describeAccess () : void; }
+abstract class Employee { abstract describeAccess () : void; }
 
-class User implements Person { 
+class User implements Employee { 
     constructor (protected readonly id: string) {} 
 
-    get Id() { return this.id; }
+    get Id () { return this.id; }
     //set Id(value: string) { this.id = value; } // Would be able to use if id weren't readonly
 
     describeAccess () { console.log(`User ${this.id} has normal user access.`); }
@@ -24,7 +24,7 @@ class ITUser extends User {
 
     constructor (id: string) { super(id); } 
 
-    static getInstance() {
+    static getInstance () {
         if (ITUser.instance) { return this.instance; }
         this.instance = new ITUser('999');
         return this.instance;
