@@ -2,6 +2,8 @@
 /// <reference path="./classes.ts" />
 /// <reference path="./interfaces.ts" />
 /// <reference path="./advanced.ts" />
+/// <reference path="./generics.ts" />
+/// <reference path="./decorators.ts" />
 
 runClasses();
 this.printSeparator();
@@ -10,6 +12,8 @@ this.printSeparator();
 runAdvanced();
 this.printSeparator();
 runGenerics();
+this.printSeparator();
+runDecorators();
 this.printSeparator();
 runBasics(); // Must run last due to intentional error
 this.printSeparator();
