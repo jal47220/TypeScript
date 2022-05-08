@@ -13,7 +13,7 @@ class Person implements Greetable {
     age: number; // Not necessary to implement from interface
 
     constructor (a: number, n?: string) { 
-        if(n) { this.name = n; }
+        if (n) { this.name = n; }
         else { this.name = 'unnamed'; }
         this.age = a; 
     }
