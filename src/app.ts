@@ -9,6 +9,8 @@ runInterfaces();
 this.printSeparator();
 runAdvanced();
 this.printSeparator();
+runGenerics();
+this.printSeparator();
 runBasics(); // Must run last due to intentional error
 this.printSeparator();
 
