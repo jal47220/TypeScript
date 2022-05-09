@@ -5,6 +5,8 @@
 /// <reference path="./generics.ts" />
 /// <reference path="./decorators.ts" />
 
+runDecorators(); // Runs first to clarify outputs from before classes are defined
+this.printSeparator();
 runClasses();
 this.printSeparator();
 runInterfaces();
@@ -12,8 +14,6 @@ this.printSeparator();
 runAdvanced();
 this.printSeparator();
 runGenerics();
-this.printSeparator();
-runDecorators();
 this.printSeparator();
 runBasics(); // Must run last due to intentional error
 this.printSeparator();
